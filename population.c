@@ -22,19 +22,20 @@ int main(void)
 
     //TODO: Calculate number of years until we reach threshold
     int years = 0;
-    int llamas = start;
-    do
-    {
-        llamas = llamas + (llamas / 3) - (llamas / 4);
-        years = years + 1;
-        
-        if (start == end)
+    if (start == end)
         {
             years = 0;
         }
+    else
+    {
+        int llamas = start;
+        do
+        {
+            llamas = llamas + (llamas / 3) - (llamas / 4);
+            years = years + 1;
+        }
+        while (llamas <= end);
     }
-    while (llamas <= end);
-
     // TODO: Print number of years
     printf("Years: %i\n", years);
 }
