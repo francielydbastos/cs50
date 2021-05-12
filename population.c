@@ -31,5 +31,5 @@ int main(void)
     while (llamas < end);
 
     // TODO: Print number of years
-    printf("The number of years is %i\n", years);
+    printf("Years: %i\n", years);
 }
