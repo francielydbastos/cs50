@@ -16,7 +16,7 @@ int main(void)
 //Building the pyramid
     for (int i = 1; i <= height; i++)
     {
-        
+        //Building the first half
         for (int j = (height - i); j > 0; j--)
         {
             printf(" ");
@@ -27,8 +27,10 @@ int main(void)
             printf("#");
         }
         
-            printf("  ");
+        //Adding the space in between
+        printf("  ");
         
+        //Building the second half
         for (int k = 1; k <= i; k++)
         {
             printf("#");
