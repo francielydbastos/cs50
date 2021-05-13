@@ -9,7 +9,7 @@ int main(void)
     int height;
     do
     {
-     height = get_int("Height: ");
+        height = get_int("Height: ");
     }
     while (height < 1 || height > 8);
 
@@ -19,7 +19,7 @@ int main(void)
         for (int j = (height - i); j > 0; j--)
         {
 
-             printf(" ");
+            printf(" ");
 
         }
         for (int k = 1; k <= i; k++)
