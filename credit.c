@@ -4,176 +4,97 @@
 
 int main(void)
 {
-    //prompts user for credit card number
-    long number = get_long("Card number: ");
-    long ccnumber = number;
+    //Asks the user for the card number
+    long cardnumber = get_long("Card Number: ");
+    long cardnumbercopy = cardnumber;
 
-    //checking number of digits
-    int ndigits = 0;
-    while (ccnumber > 0)
+    //Determines the length of the number provided
+    int cardlength = 0;
+    do
     {
-        ccnumber = ccnumber/10;
-        ndigits++;
+        cardnumbercopy = cardnumbercopy / 10;
+        cardlength++;
     }
+    while (cardnumbercopy > 0);
 
-    //checking if number of digits corresponds to a valid credit card and
-    if (ndigits != 13 && ndigits != 15 && ndigits != 16)
+    //Weeds out card numbers with invalid length
+    if (cardlength != 13 && cardlength != 15 && cardlength != 16)
     {
-        printf("Invalid.\n");
+        printf("INVALID \n");
     }
-
-    //getting individual digits for VISA 13dig
-    if (ndigits == 13)
+    
+    else
     {
-        int digit13 = number % 10;
-        long number2 = number / 10;
-
-        int digit12 = number2 % 10;
-        long number3 = number2 / 10;
-
-        int digit11 = number3 % 10;
-        long number4 = number3 / 10;
-
-        int digit10 = number4 % 10;
-        long number5 = number4 / 10;
-
-        int digit9 = number5 % 10;
-        long number6 = number5 / 10;
-
-        int digit8 = number6 % 10;
-        long number7 = number6 / 10;
-
-        int digit7 = number7 % 10;
-        long number8 = number7 / 10;
-
-        int digit6 = number8 % 10;
-        long number9 = number8 / 10;
-
-        int digit5 = number9 % 10;
-        long number10 = number9 / 10;
-
-        int digit4 = number10 % 10;
-        long number11 = number10 / 10;
-
-        int digit3 = number11 % 10;
-        long number12 = number11 / 10;
-
-        int digit2 = number12 % 10;
-        long number13 = number12 / 10;
-
-        int digit1 = number13 % 10;
-
-        //multiply every other digit by 2 starting with the 2nd to last
-        digit122 = digit12 * 2;
-        digit102 = digit10 * 2;
-        digit82 = digit8 * 2;
-        digit62 = digit6 * 2;
-        digit42 = digit4 * 2;
-        digit22 = digit2 * 2;
-
+        //Stores single digits in an array. The digits stored are reversed for now :(
+        int digits[cardlength];
+        long cardnumber2 = cardnumber;
+        int singleD;
+    
+        for (int i = 0; i < cardlength; i++)
+        {
+            singleD = cardnumber2 % 10; //When I was trying to store the digit directly into the array it wasn't working
+            digits[i] = singleD;        //Probably because cardnumber is long and array is int???
+            cardnumber2 = cardnumber2 / 10;
+        }
+    
+        //Luhns algorithm to check if the card number is valid
+        //Multiplying every other digit by 2, starting from the 2nd to last digit
+        int sum = 0;
+        int dig;
+        int a;
+        int b;
+        
+        for (int i = 1; i < cardlength; i = i + 2)
+        {
+            dig = digits[i] * 2;
+            if (dig < 10)
+            {
+                sum = sum + dig;
+            }
+            else
+            {
+                a = dig % 10;
+                b = dig / 10;
+                sum = sum + a + b;
+            }
+        }
+        
+        //Sum of the digits that weren't multiplied by 2
+        int sum1 = 0;
+        
+        for (int i = 0; i < cardlength; i = i + 2)
+        {
+            sum1 = digits[i] + sum1;
+        }
+        
+        //TOTAL SUM!!!!!
+        int sumcheck = sum + sum1;
+        int check1 = sumcheck % 10;
+        
+        //Checking if card is valid and what is the company
+        if (check1 != 0)
+        {
+            printf("INVALID \n");
+        }
+        
+        else
+        {
+            //For MASTERCARD
+            if (cardlength == 16 && digits[15] == 5 && (digits[14] == 1 || digits[14] == 2 || digits[14] == 3 || digits[14] == 4 
+                    || digits[14] == 5))
+            {
+                printf("MASTERCARD\n");
+            }
+            //For AMEX
+            else if (cardlength == 15 && digits[14] == 3 && (digits[13] == 4 || digits[13] == 7))
+            {
+                printf("AMEX\n");
+            }
+            //For VISA
+            else if ((cardlength == 13 || cardlength == 16) && digits[cardlength - 1] == 4)
+            {
+                printf("VISA\n");
+            }
+        }
     }
-    //getting individual digits for AMEX
-    else if (ndigits == 15)
-    {
-        int digit15 = number % 10;
-        long number2 = number / 10;
-
-        int digit14 = number2 % 10;
-        long number3 = number2 / 10;
-
-        int digit13 = number3 % 10;
-        long number4 = number3 / 10;
-
-        int digit12 = number4 % 10;
-        long number5 = number4 / 10;
-
-        int digit11 = number5 % 10;
-        long number6 = number5 / 10;
-
-        int digit10 = number6 % 10;
-        long number7 = number6 / 10;
-
-        int digit9 = number7 % 10;
-        long number8 = number7 / 10;
-
-        int digit8 = number8 % 10;
-        long number9 = number8 / 10;
-
-        int digit7 = number9 % 10;
-        long number10 = number9 / 10;
-
-        int digit6 = number10 % 10;
-        long number11 = number10 / 10;
-
-        int digit5 = number11 % 10;
-        long number12 = number11 / 10;
-
-        int digit4 = number12 % 10;
-        long number13 = number12 / 10;
-
-        int digit3 = number13 % 10;
-        long number14 = number13 / 10;
-
-        int digit2 = number14 % 10;
-        long number15 = number14 / 10;
-
-        int digit1 = number15 % 10;
-    }
-
-    //getting individual digits for VISA 16dig or MASTERCARD
-    else if (ndigits == 16)
-    {
-        int digit16 = number % 10;
-        long number2 = number / 10;
-
-        int digit15 = number2 % 10;
-        long number3 = number2 / 10;
-
-        int digit14 = number3 % 10;
-        long number4 = number3 / 10;
-
-        int digit13 = number4 % 10;
-        long number5 = number4 / 10;
-
-        int digit12 = number5 % 10;
-        long number6 = number5 / 10;
-
-        int digit11 = number6 % 10;
-        long number7 = number6 / 10;
-
-        int digit10 = number7 % 10;
-        long number8 = number7 / 10;
-
-        int digit9 = number8 % 10;
-        long number9 = number8 / 10;
-
-        int digit8 = number9 % 10;
-        long number10 = number9 / 10;
-
-        int digit7 = number10 % 10;
-        long number11 = number10 / 10;
-
-        int digit6 = number11 % 10;
-        long number12 = number11 / 10;
-
-        int digit5 = number12 % 10;
-        long number13 = number12 / 10;
-
-        int digit4 = number13 % 10;
-        long number14 = number13 / 10;
-
-        int digit3 = number14 % 10;
-        long number15 = number14 / 10;
-
-        int digit2 = number15 % 10;
-        long number16 = number15 / 10;
-
-        int digit1 = number16 % 10;
-    }
-
-    //calculate checksum
-
-
-    //reports if the card is an AMEX, VISA or MASTERCARD
-
 }
