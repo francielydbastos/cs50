@@ -20,7 +20,7 @@ int main(void)
     //Weeds out card numbers with invalid length
     if (cardlength != 13 && cardlength != 15 && cardlength != 16)
     {
-        printf("INVALID \n");
+        printf("INVALID\n");
     }
     
     else
@@ -74,7 +74,7 @@ int main(void)
         //Checking if card is valid and what is the company
         if (check1 != 0)
         {
-            printf("INVALID \n");
+            printf("INVALID\n");
         }
         
         else
