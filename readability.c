@@ -42,8 +42,8 @@ int main(void)
     }
     
     //Calculating the Coleman-Liau index
-    int L = lettercount * 100 / words; //average nº of letters per 100 words
-    int S = sentencecount * 100 / words; //average nº of sentences per 100 words
+    float L = lettercount * 100.0 / words; //average nº of letters per 100 words
+    float S = sentencecount * 100.0 / words; //average nº of sentences per 100 words
     int index = round(0.0588 * L - 0.296 * S - 15.8);
     
     if (index < 1)
