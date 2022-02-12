@@ -1,6 +1,6 @@
 This repository contains my codes for the exercises proposed during Harvard's CS50x course.
 
-1. [Scratch - Sorting Hat Project] (https://github.com/francielydbastos/cs50/tree/cs50/problems/2021/x/scratch)
+1. [Scratch - Sorting Hat Project] (/tree/cs50/problems/2021/x/scratch)
 2. [C - Hello] (https://github.com/francielydbastos/cs50/tree/cs50/problems/2021/x/hello)
 3. [C - Mario Less] (https://github.com/francielydbastos/cs50/tree/cs50/problems/2021/x/mario/less)
 4. [C - Mario More] (https://github.com/francielydbastos/cs50/tree/cs50/problems/2021/x/mario/more)
